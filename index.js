@@ -41,9 +41,9 @@ function addGamesToPage(games) {
             <img class="game-img" src=${game.img} />
             <h4>${game.name}</h4>
             <p>${game.description}</p>
-            <p>Pledged: ${game.pledged}</p>
-            <p>Goal: ${game.goal}</p>
-            <p>Backers: ${game.backers}</p>`;
+            <p>Pledged: ${game.pledged.toLocaleString("en-US")}</p>
+            <p>Goal: ${game.goal.toLocaleString("en-US")}</p>
+            <p>Backers: ${game.backers.toLocaleString("en-US")}</p>`;
         // append the game to the games-container
         const gamesContainerDiv = document.getElementById("games-container");
         gamesContainerDiv.appendChild(gameCardDiv);

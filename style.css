@@ -3,6 +3,7 @@
 body {
     font-family: 'Cabin';
     background-color: #758190;
+    padding: 30px;
 }
 
 #tentacles {
@@ -19,16 +20,29 @@ body {
     margin-top: -10px;
 }
 
+nav {
+    background-color: #444;
+    overflow: hidden;
+    display: flex;
+  }
+
+  nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    background-color: #555;
+  }
+
 .stats-container {
     display: flex;
     align-items: center;
 }
-
-.stats-container:hover {
-    cursor: pointer;
-    box-shadow: 0 0 30px lightblue;
-}
-
 
 .stats-card {
     background-color: #a8b0bc;
@@ -37,6 +51,11 @@ body {
     margin: 1%;
     width: 100%;
     text-align: center;
+}
+
+.stats-card:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px lightblue;
 }
 
 #num-contributions, #total-raised, #num-games {
@@ -80,3 +99,22 @@ button {
     margin: 1%;
     border-radius: 7px;
 }
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px lightblue;
+}
+
+.game-img {
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  /* Define the keyframes for the fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
