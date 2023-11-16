@@ -38,9 +38,12 @@ function addGamesToPage(games) {
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
         gameCardDiv.innerHTML = `
-            <p>Game: ${game.name}</p>
-            <p>Description: ${game.description}</p>
-            <img class="game-img" src=${game.img} />`;
+            <img class="game-img" src=${game.img} />
+            <h4>${game.name}</h4>
+            <p>${game.description}</p>
+            <p>Pledged: ${game.pledged}</p>
+            <p>Goal: ${game.goal}</p>
+            <p>Backers: ${game.backers}</p>`;
         // append the game to the games-container
         const gamesContainerDiv = document.getElementById("games-container");
         gamesContainerDiv.appendChild(gameCardDiv);
@@ -164,10 +167,19 @@ const secondGameContainer = document.getElementById("second-game");
 
 const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
     return item2.pledged - item1.pledged;
-});
+});``
+
+console.log(sortedGames);
 
 // use destructuring and the spread operator to grab the first and second games
+const [firstGame, secondGame, ...lastGame] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const firstGameElement = document.createElement("h4");
+firstGameElement.innerHTML = firstGame.name;
+firstGameContainer.appendChild(firstGameElement);
 
 // do the same for the runner up item
+const secondGameElement = document.createElement("h4");
+secondGameElement.innerHTML = secondGame.name;
+secondGameContainer.appendChild(secondGameElement);
