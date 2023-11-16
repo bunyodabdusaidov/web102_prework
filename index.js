@@ -183,3 +183,31 @@ firstGameContainer.appendChild(firstGameElement);
 const secondGameElement = document.createElement("h4");
 secondGameElement.innerHTML = secondGame.name;
 secondGameContainer.appendChild(secondGameElement);
+
+// create search function to search the games
+function searchGames(query) {
+    const lowercaseQuery = query.toLowerCase();
+    return games.filter(game =>
+      game.name.toLowerCase().includes(lowercaseQuery) ||
+      game.description.toLowerCase().includes(lowercaseQuery)
+    );
+  }
+
+  function handleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value;
+    const searchResults = searchGames(searchTerm);
+
+    // Display search results in real-time
+    const searchResultsContainer = document.getElementById('searchResults');
+    searchResultsContainer.innerHTML = '';
+
+    searchResults.forEach(result => {
+      const listItem = document.createElement('li');
+      listItem.textContent = result.name;
+      searchResultsContainer.appendChild(listItem);
+    });
+}
+
+const searchBar = document.getElementById("searchInput");
+searchBar.addEventListener("input", handleSearch);

@@ -10,34 +10,82 @@ body {
     width: 50px;
 }
 
-.header {
+.header,
+.nav-bar,
+#searchInput {
     display: flex;
-    background-color: lightblue;
-    padding: 1%;
     align-items: center;
+    padding: 1%;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.header {
+    background-color: lightblue;
     margin-left: -10px;
     margin-right: -10px;
     margin-top: -10px;
 }
 
-nav {
+.nav-bar {
     background-color: #444;
     overflow: hidden;
-    display: flex;
-  }
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+}
 
-  nav a {
+.nav-bar a {
     float: left;
     display: block;
     color: white;
     text-align: center;
-    padding: 16px 16px;
+    padding: 14px 16px;
     text-decoration: none;
-  }
+}
 
-  nav a:hover {
+.nav-bar a:hover {
     background-color: #555;
-  }
+}
+
+#searchInput {
+    background-image: url('/assets/search-icon.png');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: 8px 8px; /* Position the search icon */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 0px;
+}
+
+
+/* Style for search results */
+#searchResults {
+    list-style-type: none;
+    padding: 0%;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 0px;
+    width: 50%;
+}
+
+#searchResults li {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: flex; /* Make it into a block element to fill the whole list */
+}
+
+#searchResults li:hover {
+    background-color: #eee;
+}
 
 .stats-container {
     display: flex;
