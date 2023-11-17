@@ -193,21 +193,31 @@ function searchGames(query) {
     );
   }
 
-  function handleSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const searchTerm = searchInput.value;
-    const searchResults = searchGames(searchTerm);
+function handleSearch() {
+const searchInput = document.getElementById('searchInput');
+const searchTerm = searchInput.value;
+const searchResults = searchGames(searchTerm);
 
-    // Display search results in real-time
-    const searchResultsContainer = document.getElementById('searchResults');
-    searchResultsContainer.innerHTML = '';
+// Display search results in real-time
+const searchResultsContainer = document.getElementById('searchResults');
+searchResultsContainer.innerHTML = '';
 
-    searchResults.forEach(result => {
-      const listItem = document.createElement('li');
-      listItem.textContent = result.name;
-      searchResultsContainer.appendChild(listItem);
-    });
+searchResults.forEach(result => {
+    const listItem = document.createElement('li');
+    listItem.textContent = result.name;
+    searchResultsContainer.appendChild(listItem);
+});
 }
 
 const searchBar = document.getElementById("searchInput");
 searchBar.addEventListener("input", handleSearch);
+
+// Add click event listener to the document body
+document.body.addEventListener("click", function (event) {
+    const searchResultsContainer = document.getElementById("searchResults");
+
+    // Check if the clicked element is outside the search bar and search results container
+    if (~searchBar.contains(event.target) && !searchResultsContainer.contains(event.target)) {
+        searchResultsContainer.innerHTML = ''; // Hide the search results
+    }
+});
