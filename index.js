@@ -28,11 +28,15 @@ const gamesContainer = document.getElementById("games-container");
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
     // loop over each item in the data
+    var gameId = 0; // unique id for each game
     for (let game of games) {
         // create a new div element, which will become the game card
         let gameCardDiv = document.createElement("div");
         // add the class game-card to the list
         gameCardDiv.className = "game-card";
+        // add unique id to each game
+        const uniqueId = `game-${gameId}`;
+        gameCardDiv.setAttribute('id', uniqueId);
         // set the inner HTML using a template literal to display some info 
         // about each game
         // TIP: if your images are not displaying, make sure there is space
@@ -47,6 +51,7 @@ function addGamesToPage(games) {
         // append the game to the games-container
         const gamesContainerDiv = document.getElementById("games-container");
         gamesContainerDiv.appendChild(gameCardDiv);
+        gameId++;
     }
 }
 
@@ -188,25 +193,28 @@ secondGameContainer.appendChild(secondGameElement);
 function searchGames(query) {
     const lowercaseQuery = query.toLowerCase();
     return games.filter(game =>
-      game.name.toLowerCase().includes(lowercaseQuery) ||
-      game.description.toLowerCase().includes(lowercaseQuery)
+        game.name.toLowerCase().includes(lowercaseQuery) ||
+        game.description.toLowerCase().includes(lowercaseQuery)
     );
   }
 
 function handleSearch() {
-const searchInput = document.getElementById('searchInput');
-const searchTerm = searchInput.value;
-const searchResults = searchGames(searchTerm);
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value;
+    const searchResults = searchGames(searchTerm);
 
-// Display search results in real-time
-const searchResultsContainer = document.getElementById('searchResults');
-searchResultsContainer.innerHTML = '';
+    // Display search results in real-time
+    const searchResultsContainer = document.getElementById('searchResults');
+    searchResultsContainer.innerHTML = '';
 
-searchResults.forEach(result => {
-    const listItem = document.createElement('li');
-    listItem.textContent = result.name;
-    searchResultsContainer.appendChild(listItem);
-});
+    searchResults.forEach(result => {
+        const listItem = document.createElement('li');
+        const anchor = document.createElement('a');
+        anchor.href = `#games-container`;
+        anchor.textContent = result.name;
+        listItem.appendChild(anchor);
+        searchResultsContainer.appendChild(listItem);
+    });
 }
 
 const searchBar = document.getElementById("searchInput");
