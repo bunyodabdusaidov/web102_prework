@@ -18,6 +18,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 * [x] Added a nav bar section at the top of the page to be able to access page section quickly.
+* [x] Added a search bar section so that the user can search the games and be taken directly to games section in the page.
 
 ## Video Walkthrough
 
